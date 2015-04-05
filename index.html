@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Razzakun's Etch A Sketch!</title>
+    <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'>
+    <link rel="stylesheet" href="stylesheet.css" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+</head>
+
+<body>
+</body>
+
+</html>
+<script>
+$(document).ready(function() {
+
+    /* Create Variables */
+
+    var size = 17;
+    var area = 500;
+    var divWrapper = "<div id='wrapper'></div>";
+    var divScreen = "<div id='screen'></div>";
+    var divInner = "<div id= 'inner'></div>";
+    var h1 = "<h1>Welcome to Razzakun's Etch A Sketch</h1>";
+    var buttonLeft = "<button id='left'>Clear</button>";
+    var buttonLeft2 = "<button id='leftTwo'>Color</button>";
+    var buttonRight = "<button id='right'>Size</button>";
+    var buttonRight2 = "<button id='right2'>Space</button>";
+
+    /*Create Html*/
+    $('body').prepend(divWrapper);
+    $('#wrapper').append(divScreen);
+    $('#screen').prepend(divInner);
+    $('#wrapper').prepend(buttonRight);
+    $('#wrapper').prepend(buttonRight2);
+    $('#wrapper').prepend(buttonLeft);
+    $('#wrapper').prepend(buttonLeft2);
+    $('#wrapper').prepend(h1);
+
+    /* Create Functions */
+
+    function changeColor(color) {
+
+
+    	$(".blue").on("mousemove", function() {
+            $(this).addClass("black");
+            $(".black").css({
+                "background-color": color,
+                "border": "0"
+            });
+        });
+
+    }
+
+    function createGrid(size) {
+
+        $(".blue").remove();
+
+        for (var i = 0; i < size; i++) {
+
+            for (var j = 0; j < size; j++) {
+                $("#inner").append("<div class = 'blue'></div>");
+            }
+
+
+
+            $("#inner").append("<div class = 'clear'></div>");
+
+        }
+
+        $(".clear").css({
+            "clear": "both"
+        });
+        $(".blue").width(area / size);
+        $(".blue").height(area / size);
+        $(".blue").css({
+            "box-sizing": "border-box",
+            "float": "left",
+            "display": "inline",
+            "vertical-align": "top",
+            "border": "1px solid #83993e"
+        });
+
+
+       
+    }
+
+
+    createGrid(size);
+
+    $("#left").on("click", function() {
+        $(this).parent().find(".black").removeClass("black");
+        $(".blue").css({
+            "background-color": "#adcc51",
+            "border": "1px solid #83993e"
+        });
+        alert("Shake Shake Shake!");
+    });
+
+
+    $("#right").on("click", function() {
+        var newSize = prompt("How many squares across?");
+        if (newSize > 1 && newSize < 16) {
+            createGrid(newSize);
+        } else {
+            alert("Try a whole number between 1 - 15");
+        }
+    });
+
+
+    $("#leftTwo").on("click", function() {
+        var newColor = prompt("You're catching on! What color do you want?");
+        
+        changeColor(newColor);
+
+    });
+
+
+  $("#right2").on("click", function() {
+        var newMargin = prompt("How much of a margin do you want?");
+ 
+         	$(".blue").css('margin', newMargin + "px");
+
+         		
+       
+    });
+
+
+
+
+});
+</script>
