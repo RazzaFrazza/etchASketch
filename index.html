@@ -43,7 +43,7 @@ $(document).ready(function() {
     function changeColor(color) {
 
 
-    	$(".blue").on("mousemove", function() {
+        $(".blue").on("mousemove", function() {
             $(this).addClass("black");
             $(".black").css({
                 "background-color": color,
@@ -83,7 +83,7 @@ $(document).ready(function() {
         });
 
 
-       
+
     }
 
 
@@ -111,19 +111,19 @@ $(document).ready(function() {
 
     $(".leftTwo").on("click", function() {
         var newColor = prompt("You're catching on! What color do you want?");
-        
+
         changeColor(newColor);
 
     });
 
 
-  $(".right2").on("click", function() {
+    $(".right2").on("click", function() {
         var newMargin = prompt("How much of a margin do you want?");
- 
-         	$(".blue").css('margin', newMargin + "px");
 
-         		
-       
+        $(".blue").css('margin', newMargin + "px");
+
+
+
     });
 
 
