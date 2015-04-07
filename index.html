@@ -19,31 +19,31 @@ $(document).ready(function() {
 
     var size = 17;
     var area = 500;
-    var divWrapper = "<div id='wrapper'></div>";
-    var divScreen = "<div id='screen'></div>";
-    var divInner = "<div id= 'inner'></div>";
-    var h1 = "<h1>Welcome to Razzakun's Etch A Sketch</h1>";
-    var buttonLeft = "<button id='left'>Clear</button>";
-    var buttonLeft2 = "<button id='leftTwo'>Color</button>";
-    var buttonRight = "<button id='right'>Size</button>";
-    var buttonRight2 = "<button id='right2'>Space</button>";
+    var divWrapper = "<div class='wrapper'></div>";
+    var divScreen = "<div class='screen'></div>";
+    var divInner = "<div class= 'inner'></div>";
+    var h1 = "<h1 class = 'font'>Welcome to Razzakun's Etch A Sketch</h1>";
+    var buttonLeft = "<button class='left font'>Clear</button>";
+    var buttonLeft2 = "<button class='leftTwo font'>Color</button>";
+    var buttonRight = "<button class='right font clearLeft'>Size</button>";
+    var buttonRight2 = "<button class='right2 font clearLeft'>Space</button>";
 
     /*Create Html*/
     $('body').prepend(divWrapper);
-    $('#wrapper').append(divScreen);
-    $('#screen').prepend(divInner);
-    $('#wrapper').prepend(buttonRight);
-    $('#wrapper').prepend(buttonRight2);
-    $('#wrapper').prepend(buttonLeft);
-    $('#wrapper').prepend(buttonLeft2);
-    $('#wrapper').prepend(h1);
+    $('.wrapper').append(divScreen);
+    $('.screen').prepend(divInner);
+    $('.wrapper').prepend(buttonRight);
+    $('.wrapper').prepend(buttonRight2);
+    $('.wrapper').prepend(buttonLeft);
+    $('.wrapper').prepend(buttonLeft2);
+    $('.wrapper').prepend(h1);
 
     /* Create Functions */
 
     function changeColor(color) {
 
 
-        $(".blue").on("mousemove", function() {
+    	$(".blue").on("mousemove", function() {
             $(this).addClass("black");
             $(".black").css({
                 "background-color": color,
@@ -60,12 +60,12 @@ $(document).ready(function() {
         for (var i = 0; i < size; i++) {
 
             for (var j = 0; j < size; j++) {
-                $("#inner").append("<div class = 'blue'></div>");
+                $(".inner").append("<div class = 'blue'></div>");
             }
 
 
 
-            $("#inner").append("<div class = 'clear'></div>");
+            $(".inner").append("<div class = 'clear'></div>");
 
         }
 
@@ -83,13 +83,13 @@ $(document).ready(function() {
         });
 
 
-
+       
     }
 
 
     createGrid(size);
 
-    $("#left").on("click", function() {
+    $(".left").on("click", function() {
         $(this).parent().find(".black").removeClass("black");
         $(".blue").css({
             "background-color": "#adcc51",
@@ -99,7 +99,7 @@ $(document).ready(function() {
     });
 
 
-    $("#right").on("click", function() {
+    $(".right").on("click", function() {
         var newSize = prompt("How many squares across?");
         if (newSize > 1 && newSize < 16) {
             createGrid(newSize);
@@ -109,21 +109,21 @@ $(document).ready(function() {
     });
 
 
-    $("#leftTwo").on("click", function() {
+    $(".leftTwo").on("click", function() {
         var newColor = prompt("You're catching on! What color do you want?");
-
+        
         changeColor(newColor);
 
     });
 
 
-    $("#right2").on("click", function() {
+  $(".right2").on("click", function() {
         var newMargin = prompt("How much of a margin do you want?");
+ 
+         	$(".blue").css('margin', newMargin + "px");
 
-        $(".blue").css('margin', newMargin + "px");
-
-
-
+         		
+       
     });
 
 
